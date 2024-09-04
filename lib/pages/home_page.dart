@@ -33,7 +33,7 @@ class _HomePageState extends State<HomePage>
             ),
           ),
           BottomNavigationBarItem(
-            label: '',
+            label: '  ',
             icon: Icon(
               Icons.mosque,
               color: Colors.deepPurple[900],
