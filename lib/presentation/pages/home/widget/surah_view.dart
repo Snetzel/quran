@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran/component/main_widget.dart';
-import 'package:quran/statemanagement/getx_class/surah_getx.dart';
-import 'package:quran/statemanagement/pages/surah_detail_page.dart';
+import 'package:quran/presentation/statemanagement/surah/surah_getx.dart';
+import 'package:quran/presentation/pages/surah_detail/surah_detail_page.dart';
 
 class SurahPage extends StatelessWidget {
   const SurahPage({super.key});

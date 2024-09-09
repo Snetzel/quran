@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran/statemanagement/pages/getstarted_page.dart';
+import 'package:quran/presentation/pages/getstarted/getstarted_page.dart';
 
 void main() {
   runApp(const MyApp());

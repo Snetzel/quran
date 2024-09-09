@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quran/component/image.dart';
+import 'package:quran/data/constant/image.dart';
 import 'package:quran/component/main_widget.dart';
 
 class SurahDetail extends StatelessWidget {

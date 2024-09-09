@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quran/component/config.dart';
-import 'package:quran/component/image.dart';
+import 'package:quran/data/constant/config.dart';
+import 'package:quran/data/constant/image.dart';
 import 'package:quran/component/main_widget.dart';
-import 'package:quran/tab_bar.dart/surah_view.dart';
+import 'package:quran/presentation/pages/home/widget/surah_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -11,8 +11,7 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
   TabController? controller;
 
   @override

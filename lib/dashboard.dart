@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:quran/statemanagement/getx_class/dashboard_getx.dart';
+import 'package:quran/presentation/statemanagement/dashboard/dashboard_getx.dart';
 
 class DashBoardPage extends StatelessWidget {
   const DashBoardPage({super.key});
@@ -29,9 +29,7 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 0
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
+                  color: ctrl.nIndex.value == 0 ? Colors.deepPurple[900] : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -46,9 +44,7 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 1
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
+                  color: ctrl.nIndex.value == 1 ? Colors.deepPurple[900] : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -63,9 +59,7 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 2
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
+                  color: ctrl.nIndex.value == 2 ? Colors.deepPurple[900] : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
