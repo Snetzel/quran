@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/pages/home_page.dart';
+import 'package:quran/dashboard.dart';
 
 class GetStarted extends StatefulWidget {
   const GetStarted({super.key});
@@ -61,7 +61,7 @@ class _GetStartedState extends State<GetStarted> {
                         context,
                         MaterialPageRoute(
                           builder: (BuildContext context) {
-                            return const HomePage();
+                            return const DashBoard();
                           },
                         ),
                       );

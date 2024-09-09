@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/tab_bar.dart/surah_page.dart';
+import 'package:quran/tab_bar.dart/surah_tab_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,35 +21,15 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        items: [
-          BottomNavigationBarItem(
-            label: '',
-            icon: Icon(
-              Icons.bookmark,
-              color: Colors.deepPurple[900],
-            ),
-          ),
-          BottomNavigationBarItem(
-            label: '  ',
-            icon: Icon(
-              Icons.mosque,
-              color: Colors.deepPurple[900],
-            ),
-          ),
-        ],
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        backgroundColor: Colors.deepPurple[900],
-        child: const Icon(
-          Icons.menu_book,
-          color: Colors.amber,
-        ),
-      ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButton: FloatingActionButton(
+      //   onPressed: () {},
+      //   backgroundColor: Colors.deepPurple[900],
+      //   child: const Icon(
+      //     Icons.menu_book,
+      //     color: Colors.amber,
+      //   ),
+      // ),
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,

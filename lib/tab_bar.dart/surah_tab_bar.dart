@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:quran/pages/surah_detail.dart';
+import 'package:quran/pages/surah_detail_page.dart';
 
 class SurahPage extends StatefulWidget {
   const SurahPage({super.key});
