@@ -1,94 +1,82 @@
 import 'package:flutter/material.dart';
-import 'package:quran/pages/bookmark_page.dart';
-import 'package:quran/pages/home_page.dart';
-import 'package:quran/pages/mosque_page.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:quran/statemanagement/getx_class/dashboard_getx.dart';
 
-class DashBoard extends StatefulWidget {
-  const DashBoard({super.key});
-
-  @override
-  State<DashBoard> createState() => _DashBoardState();
-}
-
-class _DashBoardState extends State<DashBoard> {
-  int pageIndex = 1;
-
-  List page = [
-    const BookmarkPage(),
-    const HomePage(),
-    const MosquePage(),
-  ];
-
-  void onTap(int index) {
-    setState(() => pageIndex = index);
-  }
+class DashBoardPage extends StatelessWidget {
+  const DashBoardPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    DashboardController ctrl = Get.put(DashboardController());
     return Scaffold(
       body: SafeArea(
-        child: page[pageIndex],
+        child: Obx(
+          () => ctrl.vaPage[ctrl.nIndex.value],
+        ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-        currentIndex: pageIndex,
-        selectedItemColor: Colors.yellow,
-        unselectedItemColor: Colors.deepPurple[900],
-        onTap: onTap,
-        items: [
-          BottomNavigationBarItem(
-            label: '',
-            icon: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: pageIndex == 0
-                    ? Colors.deepPurple[900]
-                    : Colors.transparent,
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.bookmark,
+      bottomNavigationBar: Obx(
+        () => BottomNavigationBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+          currentIndex: ctrl.nIndex.value,
+          selectedItemColor: Colors.yellow,
+          unselectedItemColor: Colors.deepPurple[900],
+          onTap: (index) => ctrl.onTap(index),
+          items: [
+            BottomNavigationBarItem(
+              label: '',
+              icon: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ctrl.nIndex.value == 0
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Icon(
+                    Iconsax.bookmark,
+                  ),
                 ),
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: '',
-            icon: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: pageIndex == 1
-                    ? Colors.deepPurple[900]
-                    : Colors.transparent,
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.home,
+            BottomNavigationBarItem(
+              label: '',
+              icon: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ctrl.nIndex.value == 1
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Icon(
+                    Iconsax.home,
+                  ),
                 ),
               ),
             ),
-          ),
-          BottomNavigationBarItem(
-            label: '  ',
-            icon: Container(
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: pageIndex == 2
-                    ? Colors.deepPurple[900]
-                    : Colors.transparent,
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(10),
-                child: Icon(
-                  Icons.mosque,
+            BottomNavigationBarItem(
+              label: '  ',
+              icon: Container(
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: ctrl.nIndex.value == 2
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Icon(
+                    Icons.mosque,
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

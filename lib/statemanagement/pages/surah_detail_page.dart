@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
+import 'package:quran/component/image.dart';
+import 'package:quran/component/main_widget.dart';
 
-class SurahDetail extends StatefulWidget {
+class SurahDetail extends StatelessWidget {
   final String name;
   final String desc;
   final String surah;
@@ -12,11 +16,6 @@ class SurahDetail extends StatefulWidget {
   });
 
   @override
-  State<SurahDetail> createState() => _SurahDetailState();
-}
-
-class _SurahDetailState extends State<SurahDetail> {
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -24,22 +23,18 @@ class _SurahDetailState extends State<SurahDetail> {
         backgroundColor: Colors.transparent,
         elevation: 0,
         leading: IconButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          onPressed: () => Get.back(),
           icon: Icon(
             Icons.arrow_back,
             color: Colors.deepPurple[900],
             size: 32,
           ),
         ),
-        title: Text(
-          widget.name,
-          style: TextStyle(
-            fontSize: 24,
-            color: Colors.deepPurple[900],
-            fontWeight: FontWeight.bold,
-          ),
+        title: W.textBody(
+          cText: name,
+          fontSize: 24,
+          textColor: Colors.deepPurple[900],
+          fontWeight: FontWeight.bold,
         ),
         actions: [
           IconButton(
@@ -72,8 +67,8 @@ class _SurahDetailState extends State<SurahDetail> {
                   bottom: -150,
                   child: Opacity(
                     opacity: 0.2,
-                    child: Image.asset(
-                      'assets/quran.png',
+                    child: W.imageAsset(
+                      imagePath: MyImage.quran,
                       scale: 3,
                     ),
                   ),
@@ -89,40 +84,32 @@ class _SurahDetailState extends State<SurahDetail> {
                     ),
                     child: Column(
                       children: [
-                        Text(
-                          widget.name,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 24,
-                          ),
+                        W.textBody(
+                          cText: name,
+                          textColor: Colors.white,
+                          fontSize: 24,
                         ),
-                        const SizedBox(height: 10),
-                        const Text(
-                          'Description Surah',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                          ),
+                        W.paddingHeight5(),
+                        W.textBody(
+                          cText: 'Desciption Surah',
+                          textColor: Colors.white,
+                          fontSize: 16,
                         ),
-                        const SizedBox(height: 15),
+                        W.paddingHeight16(),
                         const Divider(
                           color: Colors.white,
                         ),
-                        const SizedBox(height: 15),
-                        Text(
-                          widget.desc,
-                          style: const TextStyle(
-                            color: Colors.white,
-                          ),
+                        W.paddingHeight16(),
+                        W.textBody(
+                          cText: desc,
+                          textColor: Colors.white,
                         ),
                         const SizedBox(height: 20),
-                        Text(
-                          widget.surah,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 40,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        W.textBody(
+                          cText: surah,
+                          textColor: Colors.white,
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
                         ),
                       ],
                     ),
@@ -130,7 +117,7 @@ class _SurahDetailState extends State<SurahDetail> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            W.paddingHeight16(),
             Expanded(
               child: SizedBox(
                 width: 380,
@@ -159,11 +146,9 @@ class _SurahDetailState extends State<SurahDetail> {
                                   ),
                                   child: Padding(
                                     padding: const EdgeInsets.all(10),
-                                    child: Text(
-                                      (index + 1).toString(),
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                      ),
+                                    child: W.textBody(
+                                      cText: (index + 1).toString(),
+                                      textColor: Colors.white,
                                     ),
                                   ),
                                 ),
@@ -171,22 +156,21 @@ class _SurahDetailState extends State<SurahDetail> {
                                 const Padding(
                                   padding: EdgeInsets.all(5),
                                   child: Icon(
-                                    Icons.share,
+                                    Iconsax.share,
                                     color: Colors.deepPurple,
                                   ),
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.all(5),
                                   child: Icon(
-                                    Icons.play_arrow_outlined,
-                                    size: 32,
+                                    Iconsax.play,
                                     color: Colors.deepPurple,
                                   ),
                                 ),
                                 const Padding(
                                   padding: EdgeInsets.all(5),
                                   child: Icon(
-                                    Icons.bookmark_outline,
+                                    Iconsax.bookmark,
                                     color: Colors.deepPurple,
                                   ),
                                 ),
@@ -194,27 +178,23 @@ class _SurahDetailState extends State<SurahDetail> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 10),
+                        W.paddingHeight5(),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Text(
-                              widget.surah,
-                              style: const TextStyle(
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 28,
-                              ),
+                            W.textBody(
+                              cText: surah,
+                              textColor: Colors.black,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 28,
                             ),
                           ],
                         ),
-                        const Text(
-                          'verse translation',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                          ),
+                        W.textBody(
+                          cText: 'Verse Translation',
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
                         ),
                         const Padding(
                           padding: EdgeInsets.symmetric(

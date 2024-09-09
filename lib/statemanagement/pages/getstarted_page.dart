@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:quran/component/config.dart';
+import 'package:quran/component/image.dart';
+import 'package:quran/component/main_widget.dart';
 import 'package:quran/dashboard.dart';
 
-class GetStarted extends StatefulWidget {
+class GetStarted extends StatelessWidget {
   const GetStarted({super.key});
 
-  @override
-  State<GetStarted> createState() => _GetStartedState();
-}
-
-class _GetStartedState extends State<GetStarted> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,24 +15,21 @@ class _GetStartedState extends State<GetStarted> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              'Quran App',
-              style: TextStyle(
-                color: Colors.deepPurple[900],
-                fontSize: 36,
-                fontWeight: FontWeight.bold,
-              ),
+            W.textBody(
+              cText: AppConfig.appName,
+              textColor: Colors.black,
+              fontSize: 36,
+              fontWeight: FontWeight.bold,
             ),
-            const SizedBox(height: 16),
-            Text(
-              'Learn Quran and\nRecite once everyday',
+            W.paddingHeight16(),
+            W.textBody(
+              cText: 'Learn Quran and\nRecite once everyday',
               textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.deepPurple[900],
-              ),
+              fontSize: 20,
+              textColor: Colors.black,
             ),
-            const SizedBox(height: 40),
+            W.paddingHeight16(),
+            W.paddingHeight16(),
             Stack(
               alignment: Alignment.center,
               clipBehavior: Clip.none,
@@ -48,8 +44,8 @@ class _GetStartedState extends State<GetStarted> {
                 ),
                 Positioned(
                   bottom: 10,
-                  child: Image.asset(
-                    'assets/quran.png',
+                  child: W.imageAsset(
+                    imagePath: MyImage.quran,
                     scale: 3,
                   ),
                 ),
@@ -57,14 +53,7 @@ class _GetStartedState extends State<GetStarted> {
                   bottom: -30,
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (BuildContext context) {
-                            return const DashBoard();
-                          },
-                        ),
-                      );
+                      Get.off(const DashBoardPage());
                     },
                     child: Container(
                       height: 60,
@@ -73,14 +62,12 @@ class _GetStartedState extends State<GetStarted> {
                         color: Colors.orange[300],
                         borderRadius: BorderRadius.circular(25),
                       ),
-                      child: const Center(
-                        child: Text(
-                          'Get Started',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
+                      child: Center(
+                        child: W.textBody(
+                          cText: 'Get Started',
+                          textColor: Colors.white,
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),

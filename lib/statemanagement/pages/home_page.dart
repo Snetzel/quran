@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:quran/tab_bar.dart/surah_tab_bar.dart';
+import 'package:quran/component/config.dart';
+import 'package:quran/component/image.dart';
+import 'package:quran/component/main_widget.dart';
+import 'package:quran/tab_bar.dart/surah_view.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,42 +24,31 @@ class _HomePageState extends State<HomePage>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // floatingActionButton: FloatingActionButton(
-      //   onPressed: () {},
-      //   backgroundColor: Colors.deepPurple[900],
-      //   child: const Icon(
-      //     Icons.menu_book,
-      //     color: Colors.amber,
-      //   ),
-      // ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 80,
-        title: Text(
-          'Quran App',
-          style: TextStyle(
-            color: Colors.deepPurple[900],
-            fontWeight: FontWeight.bold,
-            fontSize: 24,
-          ),
+        title: W.textBody(
+          cText: AppConfig.appName,
+          textColor: Colors.black,
+          fontWeight: FontWeight.bold,
+          fontSize: 24,
         ),
         leading: IconButton(
           onPressed: () {},
-          icon: Icon(
+          icon: const Icon(
             Icons.menu,
-            color: Colors.deepPurple[900],
-            size: 32,
+            color: Colors.black,
+            size: 24,
           ),
         ),
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.search,
-              size: 32,
-              color: Colors.deepPurple[900],
+              size: 24,
+              color: Colors.black,
             ),
           ),
         ],
@@ -69,23 +61,20 @@ class _HomePageState extends State<HomePage>
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                'Assalamualaikum',
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.deepPurple[900],
-                ),
+              W.textBody(
+                cText: 'Assalammualaikum',
+                fontSize: 20,
+                textColor: Colors.black,
               ),
-              const SizedBox(height: 5),
-              Text(
-                'Tanvir Ahassab',
-                style: TextStyle(
-                  fontSize: 28,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.deepPurple[900],
-                ),
+              W.paddingHeight5(),
+              W.textBody(
+                cText: 'Tanvir Ahassab',
+                fontSize: 28,
+                fontWeight: FontWeight.bold,
+                textColor: Colors.black,
               ),
-              const SizedBox(height: 28),
+              W.paddingHeight16(),
+              W.paddingHeight16(),
               Stack(
                 alignment: Alignment.center,
                 children: [
@@ -96,42 +85,37 @@ class _HomePageState extends State<HomePage>
                       color: Colors.deepPurple[400],
                       borderRadius: BorderRadius.circular(10),
                     ),
-                    child: const Padding(
-                      padding: EdgeInsets.all(20),
+                    child: Padding(
+                      padding: const EdgeInsets.all(20),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Row(
                             children: [
-                              Icon(
+                              const Icon(
                                 Icons.chrome_reader_mode,
                                 color: Colors.white,
                               ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Lost Read',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 12,
-                                ),
+                              W.paddingWidth5(),
+                              W.textBody(
+                                cText: 'Lost Read',
+                                textColor: Colors.white,
+                                fontSize: 12,
                               ),
                             ],
                           ),
-                          SizedBox(height: 20),
-                          Text(
-                            'Al-Fatiah',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 20,
-                            ),
+                          W.paddingHeight16(),
+                          W.textBody(
+                            cText: 'Al-Fatiah',
+                            textColor: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20,
                           ),
-                          SizedBox(height: 10),
-                          Text(
-                            'Ayat No. 1',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                          W.paddingHeight5(),
+                          W.paddingHeight5(),
+                          W.textBody(
+                            cText: 'Ayat No.1',
+                            textColor: Colors.white,
                           ),
                         ],
                       ),
@@ -140,14 +124,14 @@ class _HomePageState extends State<HomePage>
                   Positioned(
                     right: -60,
                     bottom: -110,
-                    child: Image.asset(
-                      'assets/quran.png',
+                    child: W.imageAsset(
+                      imagePath: MyImage.quran,
                       scale: 4,
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
+              W.paddingWidth16(),
               Container(
                 height: 60,
                 color: Colors.transparent,
@@ -156,60 +140,52 @@ class _HomePageState extends State<HomePage>
                   indicatorColor: Colors.deepPurple[900],
                   labelColor: Colors.deepPurple[900],
                   unselectedLabelColor: Colors.deepPurple[200],
-                  tabs: const [
+                  tabs: [
                     Tab(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
-                        child: Text(
-                          'Surah',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
+                        child: W.textBody(
+                          cText: 'Surah',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Tab(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
-                        child: Text(
-                          'Parah',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
+                        child: W.textBody(
+                          cText: 'Parah',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Tab(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
-                        child: Text(
-                          'Page',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
+                        child: W.textBody(
+                          cText: 'Page',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
                     Tab(
                       child: Padding(
-                        padding: EdgeInsets.symmetric(
+                        padding: const EdgeInsets.symmetric(
                           vertical: 10,
                         ),
-                        child: Text(
-                          'Hjb',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18,
-                          ),
+                        child: W.textBody(
+                          cText: 'Hjb',
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -219,16 +195,16 @@ class _HomePageState extends State<HomePage>
               Expanded(
                 child: TabBarView(
                   controller: controller,
-                  children: const [
-                    SurahPage(),
+                  children: [
+                    const SurahPage(),
                     Center(
-                      child: Text('Parah'),
+                      child: W.textBody(cText: 'Parah'),
                     ),
                     Center(
-                      child: Text('Page'),
+                      child: W.textBody(cText: 'Page'),
                     ),
                     Center(
-                      child: Text('Hjb'),
+                      child: W.textBody(cText: 'Hjb'),
                     ),
                   ],
                 ),
