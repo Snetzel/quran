@@ -1,14 +1,16 @@
-import 'dart:convert';
-import 'package:dio/dio.dart';
-import 'package:quran/data/constant/config.dart';
-import 'package:quran/data/model/surah_model.dart';
+part of 'main_function.dart';
 
-Future<List<dynamic>> dioQuran() async {
-  final response = await Dio().get(AppConfig.cUrl);
-  if (response.statusCode == 200) {
-    print('Great');
-    return response.data['data'];
-  } else {
-    throw ('left');
+mixin DioComponent {
+  Dio dio = Dio();
+
+  Future<Response> getSurah() async {
+    Response? response;
+    try {
+      response = await dio.get(AppConfig.cUrl);
+      print("--res ${response.data}");
+    } catch (e) {
+      print(e);
+    }
+    return response!;
   }
 }

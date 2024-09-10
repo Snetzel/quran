@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:quran/component/function/main_function.dart';
 import 'package:quran/data/constant/config.dart';
 import 'package:quran/data/constant/image.dart';
-import 'package:quran/component/main_widget.dart';
+import 'package:quran/component/function/main_widget.dart';
 import 'package:quran/presentation/pages/home/widget/surah_view.dart';
 import 'package:quran/presentation/statemanagement/home/home_getx.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  HomePage({super.key});
+
+  final HomeController ctrl = Get.put(HomeController());
 
   @override
   Widget build(BuildContext context) {
-    HomeController ctrl = Get.put(HomeController());
+    ctrl.init();
+    C.getSurah();
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,

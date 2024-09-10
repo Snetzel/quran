@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:quran/data/constant/config.dart';
 import 'package:quran/data/constant/image.dart';
-import 'package:quran/component/main_widget.dart';
+import 'package:quran/component/function/main_widget.dart';
 import 'package:quran/dashboard.dart';
 
 class GetStarted extends StatelessWidget {

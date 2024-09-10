@@ -1,12 +1,10 @@
 import 'dart:convert';
 
-List<QuranModel> quranModelFromMap(String str) =>
-    List<QuranModel>.from(json.decode(str).map((x) => QuranModel.fromMap(x)));
+List<SurahModel> surahModelFromMap(List str) => List<SurahModel>.from(str.map((x) => SurahModel.fromMap(x)));
 
-String quranModelToMap(List<QuranModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
+String surahModelToMap(List<SurahModel> data) => json.encode(List<dynamic>.from(data.map((x) => x.toMap())));
 
-class QuranModel {
+class SurahModel {
   int nomor;
   String nama;
   String namaLatin;
@@ -16,7 +14,7 @@ class QuranModel {
   String deskripsi;
   Map<String, String> audioFull;
 
-  QuranModel({
+  SurahModel({
     required this.nomor,
     required this.nama,
     required this.namaLatin,
@@ -27,7 +25,7 @@ class QuranModel {
     required this.audioFull,
   });
 
-  factory QuranModel.fromMap(Map<String, dynamic> json) => QuranModel(
+  factory SurahModel.fromMap(Map<String, dynamic> json) => SurahModel(
         nomor: json["nomor"],
         nama: json["nama"],
         namaLatin: json["namaLatin"],
@@ -35,8 +33,7 @@ class QuranModel {
         tempatTurun: tempatTurunValues.map[json["tempatTurun"]]!,
         arti: json["arti"],
         deskripsi: json["deskripsi"],
-        audioFull: Map.from(json["audioFull"])
-            .map((k, v) => MapEntry<String, String>(k, v)),
+        audioFull: Map.from(json["audioFull"]).map((k, v) => MapEntry<String, String>(k, v)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -47,15 +44,13 @@ class QuranModel {
         "tempatTurun": tempatTurunValues.reverse[tempatTurun],
         "arti": arti,
         "deskripsi": deskripsi,
-        "audioFull":
-            Map.from(audioFull).map((k, v) => MapEntry<String, dynamic>(k, v)),
+        "audioFull": Map.from(audioFull).map((k, v) => MapEntry<String, dynamic>(k, v)),
       };
 }
 
 enum TempatTurun { MADINAH, MEKAH }
 
-final tempatTurunValues =
-    EnumValues({"Madinah": TempatTurun.MADINAH, "Mekah": TempatTurun.MEKAH});
+final tempatTurunValues = EnumValues({"Madinah": TempatTurun.MADINAH, "Mekah": TempatTurun.MEKAH});
 
 class EnumValues<T> {
   Map<String, T> map;

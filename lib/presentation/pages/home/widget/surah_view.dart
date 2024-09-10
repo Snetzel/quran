@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran/component/main_widget.dart';
+import 'package:quran/component/function/main_widget.dart';
 import 'package:quran/presentation/statemanagement/surah/surah_getx.dart';
 import 'package:quran/presentation/pages/surah_detail/surah_detail_page.dart';
 

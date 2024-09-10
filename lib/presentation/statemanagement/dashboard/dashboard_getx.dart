@@ -9,7 +9,7 @@ class DashboardController extends GetxController {
 
   List vaPage = <Widget>[
     const BookmarkPage(),
-    const HomePage(),
+    HomePage(),
     const MosquePage(),
   ];
 
