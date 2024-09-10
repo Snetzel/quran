@@ -33,7 +33,7 @@ class SurahDetail extends StatelessWidget {
         ),
         title: Obx(
           () => W.textBody(
-            cText: ctrl.surahDetail['namaLatin'],
+            cText: ctrl.vaSurahDetail['namaLatin'],
             fontSize: 24,
             textColor: Colors.deepPurple[900],
             fontWeight: FontWeight.bold,
@@ -89,13 +89,13 @@ class SurahDetail extends StatelessWidget {
                       () => Column(
                         children: [
                           W.textBody(
-                            cText: ctrl.surahDetail['namaLatin'],
+                            cText: ctrl.vaSurahDetail['namaLatin'],
                             textColor: Colors.white,
                             fontSize: 24,
                           ),
                           W.paddingHeight5(),
                           W.textBody(
-                            cText: ctrl.surahDetail['arti'],
+                            cText: ctrl.vaSurahDetail['arti'],
                             textColor: Colors.white,
                             fontSize: 16,
                           ),
@@ -105,13 +105,12 @@ class SurahDetail extends StatelessWidget {
                           ),
                           W.paddingHeight16(),
                           W.textBody(
-                            cText:
-                                '${ctrl.surahDetail['tempatTurun']} - ${ctrl.surahDetail['jumlahAyat']} ayat',
+                            cText: '${ctrl.vaSurahDetail['tempatTurun']} - ${ctrl.vaSurahDetail['jumlahAyat']} ayat',
                             textColor: Colors.white,
                           ),
                           const SizedBox(height: 20),
                           W.textBody(
-                            cText: ctrl.surahDetail['nama'],
+                            cText: ctrl.vaSurahDetail['nama'],
                             textColor: Colors.white,
                             fontSize: 40,
                             fontWeight: FontWeight.bold,
@@ -129,9 +128,9 @@ class SurahDetail extends StatelessWidget {
                 width: 380,
                 child: Obx(
                   () => ListView.builder(
-                    itemCount: ctrl.surahDetail['ayat'].length,
+                    itemCount: ctrl.vaSurahDetail['ayat'].length,
                     itemBuilder: (context, index) {
-                      final idata = ctrl.surahDetail['ayat'][index];
+                      final idata = ctrl.vaSurahDetail['ayat'][index];
                       return Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [

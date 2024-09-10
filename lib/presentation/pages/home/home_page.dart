@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran/component/function/main_function.dart';
 import 'package:quran/data/constant/config.dart';
 import 'package:quran/data/constant/image.dart';
 import 'package:quran/component/function/main_widget.dart';
@@ -15,7 +14,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // ctrl.init();
-    C.getSurah();
 
     return Scaffold(
       appBar: AppBar(

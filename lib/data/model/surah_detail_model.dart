@@ -1,11 +1,10 @@
 import 'dart:convert';
 
-QuranModel quranModelFromMap(String str) =>
-    QuranModel.fromMap(json.decode(str));
+SurahDetailModel quranModelFromMap(Map<String, dynamic> str) => SurahDetailModel.fromMap(str);
 
-String quranModelToMap(QuranModel data) => json.encode(data.toMap());
+String quranModelToMap(SurahDetailModel data) => json.encode(data.toMap());
 
-class QuranModel {
+class SurahDetailModel {
   int nomor;
   String nama;
   String namaLatin;
@@ -18,7 +17,7 @@ class QuranModel {
   SuratSelanjutnya suratSelanjutnya;
   bool suratSebelumnya;
 
-  QuranModel({
+  SurahDetailModel({
     required this.nomor,
     required this.nama,
     required this.namaLatin,
@@ -32,7 +31,7 @@ class QuranModel {
     required this.suratSebelumnya,
   });
 
-  factory QuranModel.fromMap(Map<String, dynamic> json) => QuranModel(
+  factory SurahDetailModel.fromMap(Map<String, dynamic> json) => SurahDetailModel(
         nomor: json["nomor"],
         nama: json["nama"],
         namaLatin: json["namaLatin"],
@@ -40,8 +39,7 @@ class QuranModel {
         tempatTurun: json["tempatTurun"],
         arti: json["arti"],
         deskripsi: json["deskripsi"],
-        audioFull: Map.from(json["audioFull"])
-            .map((k, v) => MapEntry<String, String>(k, v)),
+        audioFull: Map.from(json["audioFull"]).map((k, v) => MapEntry<String, String>(k, v)),
         ayat: List<Ayat>.from(json["ayat"].map((x) => Ayat.fromMap(x))),
         suratSelanjutnya: SuratSelanjutnya.fromMap(json["suratSelanjutnya"]),
         suratSebelumnya: json["suratSebelumnya"],
@@ -55,8 +53,7 @@ class QuranModel {
         "tempatTurun": tempatTurun,
         "arti": arti,
         "deskripsi": deskripsi,
-        "audioFull":
-            Map.from(audioFull).map((k, v) => MapEntry<String, dynamic>(k, v)),
+        "audioFull": Map.from(audioFull).map((k, v) => MapEntry<String, dynamic>(k, v)),
         "ayat": List<dynamic>.from(ayat.map((x) => x.toMap())),
         "suratSelanjutnya": suratSelanjutnya.toMap(),
         "suratSebelumnya": suratSebelumnya,
@@ -83,8 +80,7 @@ class Ayat {
         teksArab: json["teksArab"],
         teksLatin: json["teksLatin"],
         teksIndonesia: json["teksIndonesia"],
-        audio: Map.from(json["audio"])
-            .map((k, v) => MapEntry<String, String>(k, v)),
+        audio: Map.from(json["audio"]).map((k, v) => MapEntry<String, String>(k, v)),
       );
 
   Map<String, dynamic> toMap() => {
@@ -109,8 +105,7 @@ class SuratSelanjutnya {
     required this.jumlahAyat,
   });
 
-  factory SuratSelanjutnya.fromMap(Map<String, dynamic> json) =>
-      SuratSelanjutnya(
+  factory SuratSelanjutnya.fromMap(Map<String, dynamic> json) => SuratSelanjutnya(
         nomor: json["nomor"],
         nama: json["nama"],
         namaLatin: json["namaLatin"],
