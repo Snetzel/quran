@@ -16,7 +16,7 @@ class GetStarted extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             W.textBody(
-              cText: AppConfig.appName,
+              cText: AppConfig.cAppName,
               textColor: Colors.black,
               fontSize: 36,
               fontWeight: FontWeight.bold,

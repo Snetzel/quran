@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:quran/data/constant/config.dart';
 import 'package:quran/data/constant/image.dart';
 import 'package:quran/component/main_widget.dart';
 import 'package:quran/presentation/pages/home/widget/surah_view.dart';
+import 'package:quran/presentation/statemanagement/home/home_getx.dart';
 
-class HomePage extends StatefulWidget {
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
-  TabController? controller;
-
-  @override
-  void initState() {
-    super.initState();
-    controller = TabController(length: 4, vsync: this);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    HomeController ctrl = Get.put(HomeController());
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
         toolbarHeight: 80,
         title: W.textBody(
-          cText: AppConfig.appName,
+          cText: AppConfig.cAppName,
           textColor: Colors.black,
           fontWeight: FontWeight.bold,
           fontSize: 24,
@@ -135,7 +125,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
                 height: 60,
                 color: Colors.transparent,
                 child: TabBar(
-                  controller: controller,
+                  controller: ctrl.controller,
                   indicatorColor: Colors.deepPurple[900],
                   labelColor: Colors.deepPurple[900],
                   unselectedLabelColor: Colors.deepPurple[200],
@@ -193,7 +183,7 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               ),
               Expanded(
                 child: TabBarView(
-                  controller: controller,
+                  controller: ctrl.controller,
                   children: [
                     const SurahPage(),
                     Center(

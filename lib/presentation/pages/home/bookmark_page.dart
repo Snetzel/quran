@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quran/component/function/dio.dart';
 
 class BookmarkPage extends StatelessWidget {
   const BookmarkPage({super.key});
@@ -7,8 +8,9 @@ class BookmarkPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text(
-          'Bookmark Page',
+        child: ElevatedButton(
+          onPressed: dioQuran,
+          child: Text('get'),
         ),
       ),
     );

@@ -37,6 +37,8 @@ dependencies:
   cupertino_icons: ^1.0.2
   get: ^4.6.6
   iconsax: ^0.0.8
+  dio: ^5.7.0
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:
