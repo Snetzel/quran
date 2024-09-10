@@ -3,20 +3,21 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'package:quran/data/constant/image.dart';
 import 'package:quran/component/function/main_widget.dart';
+import 'package:quran/presentation/statemanagement/surah/surah_detail_getx.dart';
 
 class SurahDetail extends StatelessWidget {
-  final String name;
-  final String desc;
-  final String surah;
-  const SurahDetail({
+  final int nomorSurat;
+  SurahDetail({
     super.key,
-    required this.name,
-    required this.desc,
-    required this.surah,
+    required this.nomorSurat,
   });
+
+  final SurahDetailController ctrl = Get.put(SurahDetailController());
 
   @override
   Widget build(BuildContext context) {
+    ctrl.nNomorSurah.value = nomorSurat;
+    ctrl.init();
     return Scaffold(
       appBar: AppBar(
         toolbarHeight: 80,
@@ -30,11 +31,13 @@ class SurahDetail extends StatelessWidget {
             size: 32,
           ),
         ),
-        title: W.textBody(
-          cText: name,
-          fontSize: 24,
-          textColor: Colors.deepPurple[900],
-          fontWeight: FontWeight.bold,
+        title: Obx(
+          () => W.textBody(
+            cText: ctrl.surahDetail['namaLatin'],
+            fontSize: 24,
+            textColor: Colors.deepPurple[900],
+            fontWeight: FontWeight.bold,
+          ),
         ),
         actions: [
           IconButton(
@@ -82,36 +85,39 @@ class SurahDetail extends StatelessWidget {
                       left: 24,
                       right: 24,
                     ),
-                    child: Column(
-                      children: [
-                        W.textBody(
-                          cText: name,
-                          textColor: Colors.white,
-                          fontSize: 24,
-                        ),
-                        W.paddingHeight5(),
-                        W.textBody(
-                          cText: 'Desciption Surah',
-                          textColor: Colors.white,
-                          fontSize: 16,
-                        ),
-                        W.paddingHeight16(),
-                        const Divider(
-                          color: Colors.white,
-                        ),
-                        W.paddingHeight16(),
-                        W.textBody(
-                          cText: desc,
-                          textColor: Colors.white,
-                        ),
-                        const SizedBox(height: 20),
-                        W.textBody(
-                          cText: surah,
-                          textColor: Colors.white,
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ],
+                    child: Obx(
+                      () => Column(
+                        children: [
+                          W.textBody(
+                            cText: ctrl.surahDetail['namaLatin'],
+                            textColor: Colors.white,
+                            fontSize: 24,
+                          ),
+                          W.paddingHeight5(),
+                          W.textBody(
+                            cText: ctrl.surahDetail['arti'],
+                            textColor: Colors.white,
+                            fontSize: 16,
+                          ),
+                          W.paddingHeight16(),
+                          const Divider(
+                            color: Colors.white,
+                          ),
+                          W.paddingHeight16(),
+                          W.textBody(
+                            cText:
+                                '${ctrl.surahDetail['tempatTurun']} - ${ctrl.surahDetail['jumlahAyat']} ayat',
+                            textColor: Colors.white,
+                          ),
+                          const SizedBox(height: 20),
+                          W.textBody(
+                            cText: ctrl.surahDetail['nama'],
+                            textColor: Colors.white,
+                            fontSize: 40,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -121,93 +127,94 @@ class SurahDetail extends StatelessWidget {
             Expanded(
               child: SizedBox(
                 width: 380,
-                child: ListView.builder(
-                  itemCount: 5,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey[200],
-                            borderRadius: BorderRadius.circular(15),
-                          ),
-                          child: Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 5,
-                              horizontal: 15,
+                child: Obx(
+                  () => ListView.builder(
+                    itemCount: ctrl.surahDetail['ayat'].length,
+                    itemBuilder: (context, index) {
+                      final idata = ctrl.surahDetail['ayat'][index];
+                      return Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey[200],
+                              borderRadius: BorderRadius.circular(15),
                             ),
-                            child: Row(
-                              children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: Colors.deepPurple[900],
-                                  ),
-                                  child: Padding(
-                                    padding: const EdgeInsets.all(10),
-                                    child: W.textBody(
-                                      cText: (index + 1).toString(),
-                                      textColor: Colors.white,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                vertical: 5,
+                                horizontal: 15,
+                              ),
+                              child: Row(
+                                children: [
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: Colors.deepPurple[900],
+                                    ),
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(10),
+                                      child: W.textBody(
+                                        cText: (index + 1).toString(),
+                                        textColor: Colors.white,
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const Spacer(),
-                                const Padding(
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(
-                                    Iconsax.share,
-                                    color: Colors.deepPurple,
+                                  const Spacer(),
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Icon(
+                                      Iconsax.share,
+                                      color: Colors.deepPurple,
+                                    ),
                                   ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(
-                                    Iconsax.play,
-                                    color: Colors.deepPurple,
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Icon(
+                                      Iconsax.play,
+                                      color: Colors.deepPurple,
+                                    ),
                                   ),
-                                ),
-                                const Padding(
-                                  padding: EdgeInsets.all(5),
-                                  child: Icon(
-                                    Iconsax.bookmark,
-                                    color: Colors.deepPurple,
+                                  const Padding(
+                                    padding: EdgeInsets.all(5),
+                                    child: Icon(
+                                      Iconsax.bookmark,
+                                      color: Colors.deepPurple,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                        ),
-                        W.paddingHeight5(),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            W.textBody(
-                              cText: surah,
+                          W.paddingHeight5(),
+                          SizedBox(
+                            width: double.infinity,
+                            child: W.textBody(
+                              cText: idata['teksArab'],
                               textColor: Colors.black,
                               fontWeight: FontWeight.bold,
                               fontSize: 28,
+                              textAlign: TextAlign.right,
                             ),
-                          ],
-                        ),
-                        W.textBody(
-                          cText: 'Verse Translation',
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.symmetric(
-                            vertical: 20,
                           ),
-                          child: Divider(
-                            height: 1,
-                            color: Colors.grey,
+                          W.textBody(
+                            cText: idata['teksIndonesia'],
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
                           ),
-                        ),
-                      ],
-                    );
-                  },
+                          const Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: 20,
+                            ),
+                            child: Divider(
+                              height: 1,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  ),
                 ),
               ),
             ),

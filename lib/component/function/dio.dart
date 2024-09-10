@@ -13,4 +13,15 @@ mixin DioComponent {
     }
     return response!;
   }
+
+  Future<Response> getSurahDetail(int nomorSurat) async {
+    Response? response;
+    try {
+      response = await dio.get('${AppConfig.cUrl}/$nomorSurat');
+      print('--- Get Detail');
+    } catch (e) {
+      print('error detail --- $e');
+    }
+    return response!;
+  }
 }

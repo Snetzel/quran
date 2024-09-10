@@ -5,95 +5,92 @@ import 'package:quran/presentation/statemanagement/surah/surah_getx.dart';
 import 'package:quran/presentation/pages/surah_detail/surah_detail_page.dart';
 
 class SurahPage extends StatelessWidget {
-  const SurahPage({super.key});
+  SurahPage({super.key});
+
+  final SurahController ctrl = Get.put(SurahController());
 
   @override
   Widget build(BuildContext context) {
-    SurahController ctrl = Get.put(SurahController());
+    ctrl.init();
     return Center(
       child: SizedBox(
-        child: ListView.builder(
-          itemCount: ctrl.vaData.length,
-          itemBuilder: (context, index) {
-            final idata = ctrl.vaData[index];
-            return InkWell(
-              onTap: () {
-                Get.to(
-                  SurahDetail(
-                    name: idata.name,
-                    desc: idata.desc,
-                    surah: idata.surah,
-                  ),
-                );
-              },
-              child: Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                    ),
-                    child: Center(
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(
-                              vertical: 20,
-                            ),
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.transparent,
-                                shape: BoxShape.circle,
-                                border: Border.all(
-                                  color: Colors.deepPurple.shade900,
-                                ),
-                              ),
-                              child: Padding(
-                                padding: const EdgeInsets.all(10),
-                                child: W.textBody(
-                                  cText: (index + 1).toString(),
-                                ),
-                              ),
-                            ),
+        child: Obx(
+          () => ListView.builder(
+            itemCount: ctrl.surah.value.length,
+            itemBuilder: (context, index) {
+              final idata = ctrl.surah.value[index];
+              return InkWell(
+                onTap: () => Get.to(SurahDetail(nomorSurat: idata.nomor)),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                        color: Colors.transparent,
+                      ),
+                      child: Center(
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(
+                            vertical: 15,
+                            horizontal: 20,
                           ),
-                          W.paddingWidth5(),
-                          W.paddingWidth5(),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                          child: Row(
                             children: [
-                              W.textBody(
-                                cText: idata.name,
-                                textColor: Colors.black,
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.transparent,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(
+                                    color: Colors.deepPurple.shade900,
+                                  ),
+                                ),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(10),
+                                  child: W.textBody(
+                                    cText: idata.nomor.toString(),
+                                  ),
+                                ),
                               ),
-                              W.paddingHeight5(),
+                              W.paddingWidth5(),
+                              W.paddingWidth5(),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  W.textBody(
+                                    cText: idata.namaLatin,
+                                    textColor: Colors.black,
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                  W.paddingHeight5(),
+                                  W.textBody(
+                                    cText: idata.arti,
+                                    fontSize: 16,
+                                    textColor: Colors.deepPurple[900],
+                                  ),
+                                ],
+                              ),
+                              const Spacer(),
                               W.textBody(
-                                cText: idata.desc,
-                                fontSize: 16,
-                                textColor: Colors.deepPurple[900],
+                                cText: idata.nama,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                textColor: Colors.black,
                               ),
                             ],
                           ),
-                          const Spacer(),
-                          W.textBody(
-                            cText: idata.surah,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            textColor: Colors.black,
-                          ),
-                        ],
+                        ),
                       ),
                     ),
-                  ),
-                  const Divider(
-                    height: 1,
-                    color: Colors.grey,
-                  ),
-                ],
-              ),
-            );
-          },
+                    const Divider(
+                      height: 1,
+                      color: Colors.grey,
+                    ),
+                  ],
+                ),
+              );
+            },
+          ),
         ),
       ),
     );

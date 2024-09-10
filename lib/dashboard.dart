@@ -29,7 +29,9 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 0 ? Colors.deepPurple[900] : Colors.transparent,
+                  color: ctrl.nIndex.value == 0
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -44,7 +46,9 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 1 ? Colors.deepPurple[900] : Colors.transparent,
+                  color: ctrl.nIndex.value == 1
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
@@ -59,12 +63,14 @@ class DashBoardPage extends StatelessWidget {
               icon: Container(
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 2 ? Colors.deepPurple[900] : Colors.transparent,
+                  color: ctrl.nIndex.value == 2
+                      ? Colors.deepPurple[900]
+                      : Colors.transparent,
                 ),
                 child: const Padding(
                   padding: EdgeInsets.all(10),
                   child: Icon(
-                    Icons.mosque,
+                    Icons.mosque_outlined,
                   ),
                 ),
               ),
