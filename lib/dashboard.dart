@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:iconsax/iconsax.dart';
+import 'package:quran/component/function/main_widget.dart';
 import 'package:quran/presentation/statemanagement/dashboard/dashboard_getx.dart';
 
 class DashBoardPage extends StatelessWidget {
-  const DashBoardPage({super.key});
+  const DashBoardPage({super.key}); //
 
   @override
   Widget build(BuildContext context) {
@@ -24,56 +24,26 @@ class DashBoardPage extends StatelessWidget {
           unselectedItemColor: Colors.deepPurple[900],
           onTap: (index) => ctrl.onTap(index),
           items: [
-            BottomNavigationBarItem(
-              label: '',
-              icon: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 0
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
-                    Iconsax.bookmark,
-                  ),
-                ),
+            W.bottonNavBarItemDashboard(
+              child: const Icon(
+                Icons.bookmark_outline,
               ),
+              indexValue: ctrl.nIndex.value,
+              indexNavBar: 0,
             ),
-            BottomNavigationBarItem(
-              label: '',
-              icon: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 1
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
-                    Iconsax.home,
-                  ),
-                ),
+            W.bottonNavBarItemDashboard(
+              child: const Icon(
+                Icons.home_outlined,
               ),
+              indexValue: ctrl.nIndex.value,
+              indexNavBar: 1,
             ),
-            BottomNavigationBarItem(
-              label: '  ',
-              icon: Container(
-                decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: ctrl.nIndex.value == 2
-                      ? Colors.deepPurple[900]
-                      : Colors.transparent,
-                ),
-                child: const Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Icon(
-                    Icons.mosque_outlined,
-                  ),
-                ),
+            W.bottonNavBarItemDashboard(
+              child: const Icon(
+                Icons.mosque_outlined,
               ),
+              indexValue: ctrl.nIndex.value,
+              indexNavBar: 2,
             ),
           ],
         ),

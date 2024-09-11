@@ -35,8 +35,8 @@ class GetStarted extends StatelessWidget {
               clipBehavior: Clip.none,
               children: [
                 Container(
-                  width: 350,
-                  height: 500,
+                  width: Get.mediaQuery.size.width * 0.8,
+                  height: Get.mediaQuery.size.height * 0.5,
                   decoration: BoxDecoration(
                     color: Colors.deepPurple,
                     borderRadius: BorderRadius.circular(25),
@@ -46,7 +46,7 @@ class GetStarted extends StatelessWidget {
                   bottom: 10,
                   child: W.imageAsset(
                     imagePath: MyImage.quran,
-                    scale: 3,
+                    scale: 4,
                   ),
                 ),
                 Positioned(

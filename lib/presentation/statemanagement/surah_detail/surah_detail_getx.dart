@@ -7,16 +7,12 @@ class SurahDetailController extends GetxController {
 
   RxInt nNomorSurah = 1.obs;
 
-  @override
-  void onInit() {
-    init();
-    super.onInit();
-  }
-
   init() {
     C.getSurahDetail(nNomorSurah.value).then((value) {
+      vaSurahDetail.value.clear();
       Map<String, dynamic> vaData = value.data['data'];
       vaSurahDetail.value.add(SurahDetailModel.fromMap(vaData));
+      vaSurahDetail.refresh();
     });
   }
 }

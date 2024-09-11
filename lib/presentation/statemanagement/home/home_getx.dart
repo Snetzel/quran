@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quran/component/function/main_function.dart';
 import 'package:quran/data/model/surah_model.dart';
 
 class HomeController extends GetxController
@@ -11,15 +10,6 @@ class HomeController extends GetxController
   @override
   void onInit() {
     controller = TabController(length: 4, vsync: this);
-    // init();
     super.onInit();
-  }
-
-  init() {
-    C.getSurah().then((value) {
-      List vaData = value.data['data'];
-      surah.value = surahModelFromMap(vaData);
-      print('--Surah = ${surah.value.first.nama}');
-    });
   }
 }
